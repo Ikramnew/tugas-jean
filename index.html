@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Matematika SD - Asyik & Interaktif</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. VARIABEL & RESET DASAR (CSS3)
+           Tema Utama: Biru Ceria (#0284c7) & Kuning Emas (#f59e0b) khas Sekolah Dasar
+           ========================================================================== */
+        :root {
+            --primary-color: #0284c7;       /* Biru Ceria Utama */
+            --primary-hover: #0369a1;       /* Biru Hover */
+            --primary-light: #e0f2fe;       /* Soft Blue Background */
+            --accent-yellow: #f59e0b;       /* Kuning Ceria */
+            --accent-yellow-hover: #d97706; /* Kuning Hover */
+            --bg-body: #f8fafc;             /* Background body bersih */
+            --bg-card: #ffffff;             /* Background Kartu */
+            --text-main: #1e293b;           /* Warna Teks Utama */
+            --text-muted: #64748b;          /* Warna Teks Muted */
+            --border-color: #e2e8f0;        /* Warna Border */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(2, 132, 199, 0.1);
+            --shadow-lg: 0 10px 25px rgba(2, 132, 199, 0.15);
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3, h4, .brand-title {
+            font-family: 'Fredoka', cursive, 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           2. HEADER ATAS
+           ========================================================================== */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            color: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid var(--accent-yellow);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-brand i {
+            font-size: 2.2rem;
+            color: var(--accent-yellow);
+            background: #ffffff20;
+            padding: 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .header-title h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-title p {
+            font-size: 0.85rem;
+            opacity: 0.95;
+            color: #fef08a;
+        }
+
+        .toggle-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* ==========================================================================
+           3. LAYOUT UTAMA (Sidebar + Main Content)
+           ========================================================================== */
+        .app-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        /* Navbar Vertikal (Sidebar) */
+        sidebar {
+            width: 290px;
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: var(--transition);
+            z-index: 90;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1.1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--accent-yellow);
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-item.active i {
+            color: var(--accent-yellow);
+        }
+
+        /* Area Konten Utama */
+        main {
+            flex: 1;
+            padding: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Konten */
+        .section-header {
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            background: var(--primary-light);
+            padding: 0.6rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           4. KARTU & DESAIN ELEMEN
+           ========================================================================== */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .badge-yellow {
+            background-color: #fef3c7;
+            color: var(--accent-yellow-hover);
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            border: 1px solid #fde68a;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Tombol Utama */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            color: #ffffff;
+            padding: 0.8rem 1.6rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+            background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+        }
+
+        .btn-yellow {
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-yellow-hover));
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+        }
+
+        .btn-yellow:hover {
+            background: linear-gradient(135deg, var(--accent-yellow-hover), var(--accent-yellow));
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35);
+        }
+
+        /* ==========================================================================
+           5. HALAMAN SPESIFIK & ISI
+           ========================================================================== */
+
+        /* A. Beranda */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
+        }
+
+        .hero-illustration {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-illustration svg {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            filter: drop-shadow(0 10px 15px rgba(2,132,199,0.15));
+        }
+
+        /* B. Profil Pengembang */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .profile-avatar-container {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-yellow);
+            padding: 4px;
+            background: var(--primary-light);
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3.5rem;
+        }
+
+        .profile-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-info .status {
+            color: var(--accent-yellow-hover);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .profile-details {
+            width: 100%;
+            text-align: left;
+            background-color: var(--primary-light);
+            padding: 1.2rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+            border: 1px solid #bae6fd;
+        }
+
+        .profile-details p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profile-details p strong {
+            color: var(--primary-color);
+        }
+
+        /* C. Tujuan Pembelajaran */
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--accent-yellow);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .objective-item:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .objective-icon {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* D, E, F. Halaman Materi & Rumus */
+        .formula-box {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 1.2rem;
+            border-radius: var(--radius-sm);
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 5px solid var(--accent-yellow);
+            text-align: center;
+        }
+
+        .explain-list {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .explain-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* G. Kalkulator Rumus Interaktif SD */
+        .calc-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .calc-result {
+            margin-top: 1.2rem;
+            padding: 1rem;
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            color: var(--primary-color);
+            border: 1px dashed var(--primary-color);
+            display: none;
+        }
+
+        /* H. Latihan Soal */
+        .practice-question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .practice-options {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .practice-options li {
+            padding: 0.6rem 1rem;
+            background: var(--primary-light);
+            margin-bottom: 0.4rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+
+        /* I. Evaluasi Kuis Interaktif */
+        .quiz-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quiz-question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-option:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary-color);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: var(--primary-color);
+            width: 18px;
+            height: 18px;
+        }
+
+        .quiz-feedback {
+            margin-top: 0.75rem;
+            padding: 0.6rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .feedback-correct {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .feedback-wrong {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+        .result-box {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-light), #ffffff);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--accent-yellow);
+            margin-top: 2rem;
+        }
+
+        .result-score {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        .result-message {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        /* J. Referensi */
+        .ref-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .ref-link:hover {
+            border-color: var(--accent-yellow);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ref-link i {
+            color: var(--accent-yellow);
+        }
+
+        /* ==========================================================================
+           6. FOOTER & TOMBOL KEMBALI KE ATAS
+           ========================================================================== */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--accent-yellow);
+            margin-top: auto;
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-yellow-hover));
+            color: #ffffff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ==========================================================================
+           7. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toggle-menu-btn {
+                display: block;
+            }
+            sidebar {
+                position: fixed;
+                top: 73px;
+                left: -290px;
+                height: calc(100vh - 73px);
+                box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+            }
+            sidebar.open {
+                left: 0;
+            }
+            main {
+                padding: 1.5rem 1rem;
+            }
+            .header-title h1 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="header-brand">
+            <i class="fa-solid fa-shapes"></i>
+            <div class="header-title">
+                <h1>MEDIA PEMBELAJARAN MATEMATIKA SD</h1>
+                <p>Belajar Berhitung & Bangun Datar Jadi Mudah</p>
+            </div>
+        </div>
+        <button class="toggle-menu-btn" id="toggleSidebar" aria-label="Buka Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ==================== APP CONTAINER ==================== -->
+    <div class="app-container">
+
+        <!-- ==================== SIDEBAR NAVBAR ==================== -->
+        <sidebar id="sidebar">
+            <a class="nav-item active" onclick="switchTab('beranda', this)">
+                <i class="fa-solid fa-house"></i> Beranda
+            </a>
+            <a class="nav-item" onclick="switchTab('profil', this)">
+                <i class="fa-solid fa-user-graduate"></i> Profil Pengembang
+            </a>
+            <a class="nav-item" onclick="switchTab('tujuan', this)">
+                <i class="fa-solid fa-bullseye"></i> Tujuan Pembelajaran
+            </a>
+            <a class="nav-item" onclick="switchTab('tambahkurang', this)">
+                <i class="fa-solid fa-plus-minus"></i> Penjumlahan & Pengurangan
+            </a>
+            <a class="nav-item" onclick="switchTab('kalibagi', this)">
+                <i class="fa-solid fa-xmark"></i> Perkalian & Pembagian
+            </a>
+            <a class="nav-item" onclick="switchTab('bangundatar', this)">
+                <i class="fa-solid fa-shapes"></i> Bangun Datar Sederhana
+            </a>
+            <a class="nav-item" onclick="switchTab('kalkulator', this)">
+                <i class="fa-solid fa-calculator"></i> Hitung Persegi Interaktif
+            </a>
+            <a class="nav-item" onclick="switchTab('latihan', this)">
+                <i class="fa-solid fa-pen-to-square"></i> Latihan Soal
+            </a>
+            <a class="nav-item" onclick="switchTab('evaluasi', this)">
+                <i class="fa-solid fa-square-check"></i> Evaluasi Kuis
+            </a>
+            <a class="nav-item" onclick="switchTab('referensi', this)">
+                <i class="fa-solid fa-book-bookmark"></i> Referensi
+            </a>
+        </sidebar>
+
+        <!-- ==================== MAIN CONTENT AREA ==================== -->
+        <main>
+
+            <!-- 1. BERANDA -->
+            <section id="beranda" class="content-section active">
+                <div class="hero">
+                    <div class="hero-text">
+                        <span class="badge-yellow"><i class="fa-solid fa-star"></i> Modul Matematika SD</span>
+                        <h2>Belajar Matematika Jadi Lebih Seru dan Menyenangkan!</h2>
+                        <p>Selamat datang adik-adik! Mari belajar matematika dasar mulai dari penjumlahan, pengurangan, perkalian, pembagian, hingga mengenal bangun datar secara interaktif.</p>
+                        <button class="btn btn-yellow" onclick="switchTabById('tujuan')">
+                            Mulai Belajar <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="hero-illustration">
+                        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="40" width="320" height="200" rx="16" fill="#0284c7" opacity="0.1"/>
+                            <rect x="50" y="50" width="300" height="180" rx="12" fill="#ffffff" stroke="#0284c7" stroke-width="3"/>
+                            <path d="M50 50 H350 V80 H50 Z" fill="#0284c7"/>
+                            <circle cx="70" cy="65" r="5" fill="#f43f5e"/>
+                            <circle cx="85" cy="65" r="5" fill="#facc15"/>
+                            <circle cx="100" cy="65" r="5" fill="#10b981"/>
+                            <text x="75" y="130" fill="#0284c7" font-size="28" font-weight="bold" font-family="Fredoka">5 + 3 = 8</text>
+                            <text x="75" y="170" fill="#f59e0b" font-size="28" font-weight="bold" font-family="Fredoka">4 × 2 = 8</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="card">
+                        <i class="fa-solid fa-plus-minus" style="font-size: 2.5rem; color: #0284c7; margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Penjumlahan & Pengurangan</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Memahami dasar berhitung angka sederhana untuk kehidupan sehari-hari.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-xmark" style="font-size: 2.5rem; color: #d28f1b; margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Perkalian & Pembagian</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Konsep perkalian sebagai penjumlahan berulang dan pembagian sebagai pengurangan berulang.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-shapes" style="font-size: 2.5rem; color: #0284c7; margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Bangun Datar</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Mengenal bentuk persegi, segitiga, lingkaran, serta cara menghitung luas dan kelilingnya.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. PROFIL PENGEMBANG -->
+            <section id="profil" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-id-card"></i>
+                    <h2>Profil Pengembang</h2>
+                </div>
+                <div class="card profile-card">
+                    <!-- <div class="profile-avatar-container">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div> -->
+                    <div class="profile-info">
+                        <h3>Jeany Aulia Putri</h3>
+                        <p class="status"><i class="fa-solid fa-graduation-cap"></i> Mahasiswa Pengembang</p>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            Selamat datang di media pembelajaran interaktif ini. Website ini dikembangkan sebagai karya tugas UTS mata kuliah <strong>Web Pembelajaran</strong> untuk membantu siswa Sekolah Dasar memahami konsep dasar matematika.
+                        </p>
+                    </div>
+                    <div class="profile-details">
+                        <p><strong><i class="fa-solid fa-user"></i> Nama Lengkap:</strong> <span>Jeany Aulia Putri</span></p>
+                        <p><strong><i class="fa-solid fa-briefcase"></i> NPM:</strong> <span>241102031200</span></p>
+                        <p><strong><i class="fa-solid fa-book-open"></i> Program Studi:</strong> <span>Teknologi Pendidikan</span></p>
+                        <p><strong><i class="fa-solid fa-layer-group"></i> Mata Kuliah:</strong> <span>Web Pembelajaran</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. TUJUAN PEMBELAJARAN -->
+            <section id="tujuan" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h2>Tujuan Pembelajaran</h2>
+                </div>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                    Setelah belajar menggunakan media ini, siswa diharapkan mampu mencapai tujuan berikut:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="objective-item">
+                        <div class="objective-icon">1</div>
+                        <div>
+                            <h4 style="color: var(--primary-color);">Memahami Penjumlahan & Pengurangan</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Siswa dapat menghitung hasil penjumlahan dan pengurangan bilangan bulat sederhana dengan benar.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-icon">2</div>
+                        <div>
+                            <h4 style="color: var(--primary-color);">Memahami Perkalian & Pembagian</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Siswa memahami konsep perkalian sebagai penjumlahan berulang dan pembagian dengan tepat.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-icon">3</div>
+                        <div>
+                            <h4 style="color: var(--primary-color);">Mengenal Bangun Datar</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Siswa dapat mengidentifikasi bentuk persegi, persegi panjang, dan segitiga beserta sifat-sifatnya.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-icon">4</div>
+                        <div>
+                            <h4 style="color: var(--primary-color);">Menghitung Luas & Keliling Persegi</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Siswa mampu menghitung luas dan keliling persegi menggunakan rumus sederhana.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. MATERI PENJUMLAHAN & PENGURANGAN -->
+            <section id="tambahkurang" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-plus-minus"></i>
+                    <h2>Materi: Penjumlahan & Pengurangan</h2>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">1. Penjumlahan (Menggabungkan)</h3>
+                    <p style="line-height: 1.6; margin-bottom: 1rem;">
+                        Penjumlahan adalah cara menggabungkan dua atau lebih kelompok benda menjadi satu kesatuan.
+                    </p>
+                    <div class="formula-box">
+                        Contoh: 5 + 3 = 8
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">2. Pengurangan (Mengambil)</h3>
+                    <p style="line-height: 1.6; margin-bottom: 1rem;">
+                        Pengurangan adalah cara mengambil sebagian atau seluruh benda dari satu kelompok.
+                    </p>
+                    <div class="formula-box">
+                        Contoh: 10 - 4 = 6
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. MATERI PERKALIAN & PEMBAGIAN -->
+            <section id="kalibagi" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-xmark"></i>
+                    <h2>Materi: Perkalian & Pembagian</h2>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">1. Perkalian (Penjumlahan Berulang)</h3>
+                    <p style="line-height: 1.6; margin-bottom: 1rem;">
+                        Perkalian adalah bentuk penjumlahan yang dilakukan secara berulang-ulang.
+                    </p>
+                    <div class="formula-box">
+                        3 × 4 = 4 + 4 + 4 = 12
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">2. Pembagian (Pengurangan Berulang)</h3>
+                    <p style="line-height: 1.6; margin-bottom: 1rem;">
+                        Pembagian adalah membagi suatu kelompok angka menjadi beberapa bagian sama banyak.
+                    </p>
+                    <div class="formula-box">
+                        12 ÷ 3 = 4
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. MATERI BANGUN DATAR -->
+            <section id="bangundatar" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-shapes"></i>
+                    <h2>Materi: Bangun Datar Sederhana</h2>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Mengenal Persegi</h3>
+                    <p style="line-height: 1.6; margin-bottom: 1rem;">
+                        Persegi adalah bangun datar yang memiliki 4 sisi yang sama panjang dan 4 sudut siku-siku.
+                    </p>
+                    <div class="formula-box">
+                        Luas Persegi = Sisi × Sisi (s × s) <br>
+                        Keliling Persegi = 4 × Sisi (4 × s)
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. KALKULATOR RUMUS INTERAKTIF SD -->
+            <section id="kalkulator" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-calculator"></i>
+                    <h2>Hitung Luas & Keliling Persegi Interaktif</h2>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Masukkan panjang sisi persegi di bawah ini untuk menghitung Luas dan Kelilingnya secara otomatis!
+                </p>
+                <div class="calc-box">
+                    <div class="form-group">
+                        <label for="sisiPersegi">Masukkan Panjang Sisi Persegi (cm):</label>
+                        <input type="number" id="sisiPersegi" class="form-control" placeholder="Contoh: 5">
+                    </div>
+                    <button class="btn btn-yellow" onclick="hitungPersegi()">
+                        <i class="fa-solid fa-calculator"></i> Hitung Luas & Keliling
+                    </button>
+                    <div id="hasilCalc" class="calc-result"></div>
+                </div>
+            </section>
+
+            <!-- 8. LATIHAN SOAL -->
+            <section id="latihan" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <h2>Latihan Soal Mandiri</h2>
+                </div>
+                <div class="card">
+                    <div class="practice-question">
+                        <p><strong>1. Hasil dari 15 + 8 adalah...</strong></p>
+                        <ul class="practice-options">
+                            <li>A. 22</li>
+                            <li><strong>B. 23 (Jawaban Benar)</strong></li>
+                            <li>C. 24</li>
+                            <li>D. 25</li>
+                        </ul>
+                    </div>
+                    <div class="practice-question">
+                        <p><strong>2. Hasil dari 6 × 4 adalah...</strong></p>
+                        <ul class="practice-options">
+                            <li>A. 20</li>
+                            <li><strong>B. 24 (Jawaban Benar)</strong></li>
+                            <li>C. 28</li>
+                            <li>D. 30</li>
+                        </ul>
+                    </div>
+                    <div class="practice-question" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                        <p><strong>3. Berapakah luas persegi yang memiliki panjang sisi 4 cm?</strong></p>
+                        <ul class="practice-options">
+                            <li>A. 8 cm²</li>
+                            <li><strong>B. 16 cm² (Jawaban Benar)</strong></li>
+                            <li>C. 12 cm²</li>
+                            <li>D. 20 cm²</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. EVALUASI KUIS INTERAKTIF -->
+            <section id="evaluasi" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-square-check"></i>
+                    <h2>Evaluasi Kuis Interaktif</h2>
+                </div>
+                <form id="quizForm" onsubmit="calculateQuizScore(event)">
+                    <!-- Soal 1 -->
+                    <div class="quiz-card">
+                        <div class="quiz-question">1. Berapakah hasil dari 25 - 9?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q1" value="A"> A. 14</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="B"> B. 16</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="C"> C. 15</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="D"> D. 17</label>
+                        </div>
+                        <div id="fb-q1" class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="quiz-card">
+                        <div class="quiz-question">2. Berapakah hasil dari 7 × 5?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q2" value="A"> A. 30</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="B"> B. 35</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="C"> C. 40</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="D"> D. 25</label>
+                        </div>
+                        <div id="fb-q2" class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="quiz-card">
+                        <div class="quiz-question">3. Berapakah hasil dari 20 ÷ 4?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q3" value="A"> A. 4</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="B"> B. 5</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="C"> C. 6</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="D"> D. 10</label>
+                        </div>
+                        <div id="fb-q3" class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="quiz-card">
+                        <div class="quiz-question">4. Rumus untuk menghitung Luas Persegi adalah...</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q4" value="A"> A. Sisi × Sisi</label>
+                            <label class="quiz-option"><input type="radio" name="q4" value="B"> B. 4 × Sisi</label>
+                            <label class="quiz-option"><input type="radio" name="q4" value="C"> C. Sisi + Sisi</label>
+                            <label class="quiz-option"><input type="radio" name="q4" value="D"> D. Alas × Tinggi</label>
+                        </div>
+                        <div id="fb-q4" class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="quiz-card">
+                        <div class="quiz-question">5. Sebuah persegi memiliki panjang sisi 6 cm. Berapakah kelilingnya?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q5" value="A"> A. 12 cm</label>
+                            <label class="quiz-option"><input type="radio" name="q5" value="B"> B. 24 cm</label>
+                            <label class="quiz-option"><input type="radio" name="q5" value="C"> C. 36 cm</label>
+                            <label class="quiz-option"><input type="radio" name="q5" value="D"> D. 18 cm</label>
+                        </div>
+                        <div id="fb-q5" class="quiz-feedback"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-yellow" style="width: 100%; justify-content: center; font-size: 1.05rem;">
+                        <i class="fa-solid fa-paper-plane"></i> Periksa Jawaban Evaluasi
+                    </button>
+                </form>
+
+                <div id="resultBox" class="result-box">
+                    <h3>Hasil Evaluasi Anda</h3>
+                    <div id="quizScore" class="result-score">0</div>
+                    <div id="quizMessage" class="result-message"></div>
+                    <button class="btn" onclick="resetQuiz()"><i class="fa-solid fa-rotate-right"></i> Coba Lagi</button>
+                </div>
+            </section>
+
+            <!-- 10. REFERENSI -->
+            <section id="referensi" class="content-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <h2>Referensi Pembelajaran</h2>
+                </div>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                    Berikut rujukan dan portal belajar matematika SD:
+                </p>
+                <a href="https://www.mathsisfun.com/" target="_blank" class="ref-link">
+                    <div>
+                        <div style="font-size: 1.1rem;">Math Is Fun - Elementary Math</div>
+                        <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-muted);">Panduan dan permainan berhitung matematika dasar.</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>Dikembangkan oleh <strong>Jeany Aulia Putri</strong> • Tugas UTS Mata Kuliah Web Pembelajaran</p>
+        <p style="margin-top: 0.3rem; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 Media Pembelajaran Matematika SD. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Tombol Kembali Ke Atas -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Kembali ke atas">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ==================== JAVASCRIPT MURNI (VANILLA JS) ==================== -->
+    <script>
+        const correctAnswers = {
+            q1: 'B',
+            q2: 'B',
+            q3: 'B',
+            q4: 'A',
+            q5: 'B'
+        };
+
+        const answerExplanations = {
+            q1: "Jawaban Benar: B. 25 - 9 = 16.",
+            q2: "Jawaban Benar: B. 7 × 5 = 35.",
+            q3: "Jawaban Benar: B. 20 ÷ 4 = 5.",
+            q4: "Jawaban Benar: A. Luas Persegi = Sisi × Sisi.",
+            q5: "Jawaban Benar: B. Keliling Persegi = 4 × Sisi = 4 × 6 = 24 cm."
+        };
+
+        function switchTab(sectionId, element) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        }
+
+        function switchTabById(sectionId) {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                if (item.getAttribute('onclick').includes(`'${sectionId}'`)) {
+                    switchTab(sectionId, item);
+                }
+            });
+        }
+
+        /* Kalkulator Persegi Interaktif SD */
+        function hitungPersegi() {
+            const s = parseFloat(document.getElementById('sisiPersegi').value);
+            const hasilEl = document.getElementById('hasilCalc');
+
+            if (isNaN(s) || s <= 0) {
+                hasilEl.style.display = 'block';
+                hasilEl.style.color = '#b91c1c';
+                hasilEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Masukkan panjang sisi yang valid (lebih besar dari 0)!';
+                return;
+            }
+
+            const luas = s * s;
+            const keliling = 4 * s;
+
+            hasilEl.style.display = 'block';
+            hasilEl.style.color = 'var(--primary-color)';
+            hasilEl.innerHTML = `
+                <i class="fa-solid fa-circle-check"></i> <strong>Hasil Perhitungan Persegi:</strong><br>
+                • Luas Persegi (s × s) = ${s} × ${s} = <strong>${luas} cm²</strong><br>
+                • Keliling Persegi (4 × s) = 4 × ${s} = <strong>${keliling} cm</strong>
+            `;
+        }
+
+        function calculateQuizScore(e) {
+            e.preventDefault();
+            let score = 0;
+            const totalQuestions = 5;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qKey = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${qKey}"]:checked`);
+                const feedbackEl = document.getElementById(`fb-${qKey}`);
+
+                feedbackEl.style.display = 'block';
+
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[qKey]) {
+                        score += 20;
+                        feedbackEl.className = 'quiz-feedback feedback-correct';
+                        feedbackEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> Jawaban Anda Benar!';
+                    } else {
+                        feedbackEl.className = 'quiz-feedback feedback-wrong';
+                        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Jawaban Salah. ${answerExplanations[qKey]}`;
+                    }
+                } else {
+                    feedbackEl.className = 'quiz-feedback feedback-wrong';
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Anda Belum Menjawab. ${answerExplanations[qKey]}`;
+                }
+            }
+
+            const resultBox = document.getElementById('resultBox');
+            const quizScoreEl = document.getElementById('quizScore');
+            const quizMessageEl = document.getElementById('quizMessage');
+
+            quizScoreEl.innerText = score;
+            resultBox.style.display = 'block';
+
+            if (score === 100) {
+                quizMessageEl.innerText = "Hore! Kamu hebat sekali! Semua jawabanmu benar sempurna! 🎉";
+            } else if (score >= 60) {
+                quizMessageEl.innerText = "Bagus sekali! Kamu sudah memahami sebagian besar materi. Tetap semangat ya! 👏";
+            } else {
+                quizMessageEl.innerText = "Jangan berkecil hati! Yuk baca materinya lagi dan coba kuisnya sekali lagi! 💪";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+            const feedbacks = document.querySelectorAll('.quiz-feedback');
+            feedbacks.forEach(fb => fb.style.display = 'none');
+            document.getElementById('resultBox').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        window.onscroll = function () {
+            const btn = document.getElementById('backToTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
